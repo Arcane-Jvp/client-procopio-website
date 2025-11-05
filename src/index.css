@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* Import da fonte Obvia Medium localizada em src/assets/obvia-medium.otf */
+@font-face {
+  font-family: 'Obvia';
+  src: url('./assets/obvia-medium.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Import da fonte Forma DJR Micro localizada em src/assets/forma-djr-micro.otf */
+@font-face {
+  font-family: 'FormaDJRMicro';
+  src: url('./assets/forma-djr-micro.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  /* Rendering / smoothing */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--background);
+
+  --obvia: 'Obvia', sans-serif;
+  --forma-djr: 'FormaDJRMicro', sans-serif;
+
+  font-family: var(--forma-djr);
+}
+
+[data-theme="dark"] {
+  --background: #141414;
+  --accent: #350000;
+  --primary: #ffffff;
+  --foreground: #222222;
+}
+
+[data-theme="light"] {
+  --background: #ffd9d9;
+  --accent: #b11e1e;
+  --primary: #000000;
+  --foreground: #ffffff;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-accent: var(--accent);
+  --color-primary: var(--primary);
+  --color-foreground: var(--foreground);
+  --font-title: var(--obvia);
+  --font-body: var(--forma-djr);
+}
