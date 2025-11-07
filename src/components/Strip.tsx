@@ -5,7 +5,8 @@ const ANIMATION_SPEED_PX_PER_SEC = 80;
 const MIN_ANIMATION_DURATION = 6;
 const DURATION_CHANGE_THRESHOLD = 0.05;
 const DISTANCE_CHANGE_THRESHOLD = 1;
-const STRIP_ROTATION_DEG = 1;
+const STRIP_ROTATION_DEG = 1.5;
+const STRIP_ROTATION_DEG_MOBILE = 2.5;
 const STRIP_VERTICAL_PADDING = "py-3.5";
 const ITEM_HORIZONTAL_PADDING = "px-5.5";
 const ITEM_TEXT_SIZE = "text-lg";
@@ -22,6 +23,7 @@ interface MarqueeStyleProps extends React.CSSProperties {
 }
 
 export default function Strip() {
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
     const containerRef = useRef<HTMLDivElement | null>(null);
     const measureRef = useRef<HTMLDivElement | null>(null);
 
@@ -62,6 +64,8 @@ export default function Strip() {
         );
     }, []);
 
+    const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(undefined);
+
     useLayoutEffect(() => {
         const container = containerRef.current;
         const measure = measureRef.current;
@@ -79,6 +83,12 @@ export default function Strip() {
             if (!newConfig) return;
 
             setConfig(prev => shouldUpdateConfig(prev, newConfig) ? newConfig : prev);
+
+            // Ajusta a altura da caixa pai para caber o elemento rotacionado
+            // getBoundingClientRect inclui transformações (rotations), então
+            // usamos sua altura para ajustar o wrapper externo.
+            const wrapperRect = currentContainer.getBoundingClientRect();
+            setWrapperHeight(Math.ceil(wrapperRect.height));
         };
 
         let resizeObserver: ResizeObserver | null = null;
@@ -123,10 +133,15 @@ export default function Strip() {
 
     return (
         <div
-            className={`w-full overflow-hidden bg-accent font-title ${STRIP_VERTICAL_PADDING} strip-tilt strip-expand`}
-            ref={containerRef}
-            role="presentation"
+            ref={wrapperRef}
+            className="w-full overflow-hidden my-8"
+            style={{ height: wrapperHeight ? `${wrapperHeight}px` : undefined }}
         >
+            <div
+                className={`w-full bg-accent font-title ${STRIP_VERTICAL_PADDING} strip-tilt strip-expand`}
+                ref={containerRef}
+                role="presentation"
+            >
             <p className="sr-only" aria-hidden={false}>
                 {BASE_ITEMS.join(", ")}
             </p>
@@ -174,6 +189,12 @@ export default function Strip() {
                     overflow: hidden;
                 }
 
+                @media (max-width: 1024px) {
+                    .strip-tilt {
+                        transform: rotate(${STRIP_ROTATION_DEG_MOBILE}deg);
+                    }
+                }
+
                 .strip-track {
                     animation: marquee var(--marquee-duration, 14s) linear infinite;
                     will-change: transform;
@@ -200,6 +221,7 @@ export default function Strip() {
                     }
                 }
             `}</style>
+            </div>
         </div>
     );
 }
