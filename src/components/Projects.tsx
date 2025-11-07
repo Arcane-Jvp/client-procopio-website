@@ -1,10 +1,31 @@
+import MasonryGallery from './MasonryGallery';
+
 export default function Projects() {
+    const projects = [
+        {
+            id: '1',
+            src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762545932/baby-driver-post_h1cpin.png',
+            alt: 'Poster do filme Baby Driver',
+        },
+        {
+            id: '2',
+            src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762546567/poster-porsche_jkhgvc.png',
+            alt: 'Poster do carro Porsche 911 GT3',
+        },
+        {
+            id: '3',
+            src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762546803/poster-hazard-mundo-titanico_hzk1hn.png',
+            alt: 'Poster do RPG Hazard: Mundo Titânico',
+        },
+    ];
+
     return (
         <div className="max-w-400 w-full mx-auto px-5">
             <div className="bg-foreground text-primary rounded-xl w-full p-4 sm:p-6">
-                <h2 id="projects-heading" className="font-title text-3xl">
+                <h2 id="projects-heading" className="font-title text-3xl mb-6">
                     Alguns projetos
                 </h2>
+                <MasonryGallery images={projects} />
             </div>
         </div>
     )
