@@ -37,6 +37,8 @@
   --accent: #350000;
   --primary: #ffffff;
   --foreground: #222222;
+
+  --foreground-tint: #2e2e2e;
 }
 
 [data-theme="light"] {
@@ -44,6 +46,8 @@
   --accent: #b11e1e;
   --primary: #000000;
   --foreground: #ffffff;
+
+  --foreground-tint: #d0d0d0;
 }
 
 @theme {
