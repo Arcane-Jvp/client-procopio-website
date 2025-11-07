@@ -73,23 +73,23 @@ export default function About() {
                     <h2 className="font-title text-3xl">Formações</h2>
 
                     <div className="flex items-center justify-between w-full text-xl max-md:flex-col">
-                        <span className="whitespace-nowrap max-md:self-start">ETEC MCM — Técnico de T.I. para Internet</span>
+                        <span className="max-md:self-start">ETEC MCM — Técnico de T.I. para Internet</span>
                         <span
                             className="flex-1 mx-2 mt-2.5 border-b-2 border-dotted border-primary max-md:hidden"
                             aria-hidden="true"
                         />
-                        <time className="whitespace-nowrap max-md:self-start" dateTime="2020-2023">
+                        <time className="max-md:self-start" dateTime="2020-2023">
                             2020 - 2023 — Concluído
                         </time>
                     </div>
 
                     <div className="flex items-center justify-between w-full text-xl max-md:flex-col">
-                        <span className="whitespace-nowrap max-md:self-start">FIAM FAAM — Bacharelado em Design</span>
+                        <span className="max-md:self-start">FIAM FAAM — Bacharelado em Design</span>
                         <span
                             className="flex-1 mx-2 mt-2.5 border-b-2 border-dotted border-primary max-md:hidden"
                             aria-hidden="true"
                         />
-                        <time className="whitespace-nowrap max-md:self-start" dateTime="2024-2027">
+                        <time className="max-md:self-start" dateTime="2024-2027">
                             2024 - 2027 — Em andamento
                         </time>
                     </div>
