@@ -55,6 +55,9 @@
   --color-accent: var(--accent);
   --color-primary: var(--primary);
   --color-foreground: var(--foreground);
+
+  --color-foreground-tint: var(--foreground-tint);
+
   --font-title: var(--obvia);
   --font-body: var(--forma-djr);
 }
