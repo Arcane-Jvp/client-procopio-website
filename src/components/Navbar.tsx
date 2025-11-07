@@ -13,7 +13,7 @@ export default function Navbar() {
     };
 
     return (
-        <div className="fixed bg-accent h-full max-h-16 left-0 right-0">
+        <div className="fixed bg-accent h-full max-h-16 left-0 right-0 z-99">
             <div className="w-full px-8 h-full flex items-center justify-between text-primary">
                 <div className="w-15">
                     {/* Inline SVG logo uses currentColor so its color follows the surrounding text color */}
