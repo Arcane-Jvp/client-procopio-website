@@ -32,14 +32,6 @@
   font-family: var(--forma-djr);
 }
 
-body {
-  overflow-x: hidden;
-}
-
-#root {
-  overflow-x: hidden;
-}
-
 [data-theme="dark"] {
   --background: #141414;
   --accent: #350000;
