@@ -10,8 +10,8 @@ export default function Projects() {
         },
         {
             id: '2',
-            src: <LogoMl className="w-full h-auto text-logo" ariaLabel="Poster do filme Vingadores: Guerra Infinita" />,
-            alt: 'Poster do filme Vingadores: Guerra Infinita',
+            src: <LogoMl className="w-full h-auto text-logo" ariaLabel="Logotipo do Marcos Pilgrim" />,
+            alt: 'Logotipo do Marcos Pilgrim',
         },
         {
             id: '3',
@@ -23,6 +23,7 @@ export default function Projects() {
             src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762546803/poster-hazard-mundo-titanico_hzk1hn.png',
             alt: 'Poster do RPG Hazard: Mundo Titânico',
         },
+        
     ];
 
     return (
