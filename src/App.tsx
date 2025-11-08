@@ -1,8 +1,8 @@
 import './App.css'
-import About from './components/About'
+import About from './components/organism/About'
 import Hero from './components/Hero'
-import Projects from './components/Projects'
-import Strip from './components/Strip'
+import Projects from './components/organism/Projects'
+import Strip from './components/molecule/Strip'
 
 function App() {
 

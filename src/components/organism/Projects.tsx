@@ -1,4 +1,5 @@
-import MasonryGallery from './MasonryGallery';
+import MasonryGallery from '../molecule/MasonryGallery';
+import LogoMl from '../atom/LogoMl';
 
 export default function Projects() {
     const projects = [
@@ -9,11 +10,16 @@ export default function Projects() {
         },
         {
             id: '2',
+            src: <LogoMl className="w-full h-auto text-logo" ariaLabel="Poster do filme Vingadores: Guerra Infinita" />,
+            alt: 'Poster do filme Vingadores: Guerra Infinita',
+        },
+        {
+            id: '3',
             src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762546567/poster-porsche_jkhgvc.png',
             alt: 'Poster do carro Porsche 911 GT3',
         },
         {
-            id: '3',
+            id: '4',
             src: 'https://res.cloudinary.com/dflvo098t/image/upload/v1762546803/poster-hazard-mundo-titanico_hzk1hn.png',
             alt: 'Poster do RPG Hazard: Mundo Titânico',
         },

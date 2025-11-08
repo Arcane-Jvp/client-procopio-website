@@ -37,8 +37,10 @@
   --accent: #350000;
   --primary: #ffffff;
   --foreground: #222222;
-
+  
+  /* variáveis relacionadas a projetos */
   --foreground-tint: #2e2e2e;
+  --logo-color: #b5b5b5;
 }
 
 [data-theme="light"] {
@@ -46,18 +48,26 @@
   --accent: #b11e1e;
   --primary: #000000;
   --foreground: #ffffff;
-
+  
+  /* variáveis relacionadas a projetos */
   --foreground-tint: #d0d0d0;
+  --logo-color: #2e2e2e;
 }
 
 @theme {
+  /* exposição das variáveis para uso em componentes/tema */
+
   --color-background: var(--background);
   --color-accent: var(--accent);
   --color-primary: var(--primary);
   --color-foreground: var(--foreground);
 
+  /* variáveis relacionadas a projetos */
   --color-foreground-tint: var(--foreground-tint);
+  --color-logo: var(--logo-color);
 
+  /* tipografia */
   --font-title: var(--obvia);
   --font-body: var(--forma-djr);
+  
 }

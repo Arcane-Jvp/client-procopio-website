@@ -1,6 +1,6 @@
 import { Sun, Moon } from 'lucide-react';
-import { useTheme } from '../contexts/useTheme';
-import Logo from './Logo';
+import { useTheme } from '../../contexts/useTheme';
+import Logo from '../atom/Logo';
 
 export default function Navbar() {
     const { effective, toggle } = useTheme();
