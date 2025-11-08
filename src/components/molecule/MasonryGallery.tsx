@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useMemo } from 'react';
 
 interface MasonryImage {
     id: string;
@@ -12,9 +13,18 @@ interface MasonryGalleryProps {
 }
 
 export default function MasonryGallery({ images }: MasonryGalleryProps) {
+    const shuffledImages = useMemo(() => {
+        const shuffled = [...images];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+    }, [images]);
+
     return (
         <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-4">
-            {images.map((image) => (
+            {shuffledImages.map((image) => (
                 <div key={image.id} className="break-inside-avoid mb-3">
                     <div className="relative overflow-hidden hover:opacity-80 transition-opacity duration-300 cursor-pointer bg-foreground-tint">
                         {typeof image.src === 'string' ? (
