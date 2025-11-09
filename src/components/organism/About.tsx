@@ -7,10 +7,10 @@ export default function About() {
         >
             <div className="flex max-md:items-center max-md:justify-center flex-col md:grid grid-cols-8 gap-4">
                 <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-6">
-                    <h2 id="about-heading" className="font-title text-3xl">
+                    <h2 id="about-heading" className="font-title text-2xl sm:text-3xl">
                         Quem sou?
                     </h2>
-                    <p className="text-xl font-light">
+                    <p className="text-lg sm:text-xl font-light">
                         Olá, sou Procópio, tenho 19 anos e estou em desenvolvimento como designer. Atualmente curso o 4°
                         semestre do bacharelado em Design, onde venho criando projetos autorais e buscando oportunidades
                         em freelances. No momento, meu foco é ampliar meu portfólio e conquistar uma vaga de estágio em um
@@ -44,23 +44,23 @@ export default function About() {
                 </figure>
 
                 <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 sm:space-y-6 col-span-4">
-                    <h2 className="font-title text-3xl">Quais serviços eu posso oferecer?</h2>
+                    <h2 className="font-title text-2xl sm:text-3xl">Quais serviços eu posso oferecer?</h2>
 
                     <dl className="grid grid-cols-1 sm:grid-cols-4 gap-3 sm:gap-2">
-                        <dt className="font-title text-2xl col-span-1 text-start w-full">Design gráfico</dt>
-                        <dd className="text-xl col-span-3">
+                        <dt className="font-title text-xl sm:text-2xl col-span-1 text-start w-full">Design gráfico</dt>
+                        <dd className="text-lg sm:text-xl col-span-3">
                             Planejamento, desenvolvimento e execução de estratégias para aumentar a produtividade em
                             redes sociais, incluindo criação de posts e artes para campanhas.
                         </dd>
 
-                        <dt className="font-title text-2xl col-span-1 text-start w-full">Social mídia</dt>
-                        <dd className="text-xl col-span-3">
+                        <dt className="font-title text-xl sm:text-2xl col-span-1 text-start w-full">Social mídia</dt>
+                        <dd className="text-lg sm:text-xl col-span-3">
                             Gestão e criação de peças gráficas com foco em transmitir a mensagem do cliente da forma mais
                             clara e eficaz possível.
                         </dd>
 
-                        <dt className="font-title text-2xl col-span-1 text-start w-full">UX Design</dt>
-                        <dd className="text-xl col-span-3">
+                        <dt className="font-title text-xl sm:text-2xl col-span-1 text-start w-full">UX Design</dt>
+                        <dd className="text-lg sm:text-xl col-span-3">
                             Planejamento e criação de protótipos para sites e aplicativos, com foco em aproximar marcas e
                             público por meio de experiências intuitivas.
                         </dd>
@@ -70,9 +70,9 @@ export default function About() {
 
             <div className="flex max-lg:items-center max-lg:justify-center flex-col lg:grid grid-cols-9 gap-4">
                 <div className="w-full bg-foreground rounded-xl p-4 sm:p-6 space-y-3 col-span-6">
-                    <h2 className="font-title text-3xl">Formações</h2>
+                    <h2 className="font-title text-2xl sm:text-3xl">Formações</h2>
 
-                    <div className="flex items-center justify-between w-full text-xl max-md:flex-col">
+                    <div className="flex items-center justify-between w-full text-lg sm:text-xl max-md:flex-col">
                         <span className="max-md:self-start">ETEC MCM — Técnico de T.I. para Internet</span>
                         <span
                             className="flex-1 mx-2 mt-2.5 border-b-2 border-dotted border-primary max-md:hidden"
@@ -83,7 +83,7 @@ export default function About() {
                         </time>
                     </div>
 
-                    <div className="flex items-center justify-between w-full text-xl max-md:flex-col">
+                    <div className="flex items-center justify-between w-full text-lg sm:text-xl max-md:flex-col">
                         <span className="max-md:self-start">FIAM FAAM — Bacharelado em Design</span>
                         <span
                             className="flex-1 mx-2 mt-2.5 border-b-2 border-dotted border-primary max-md:hidden"
