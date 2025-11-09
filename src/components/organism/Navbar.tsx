@@ -116,7 +116,7 @@ export default function Navbar() {
                     {/* Desktop nav - visible from md and up */}
                     <ul className="hidden md:flex gap-30 font-title text-lg">
                         <li><Link to="/about" className="hover:underline">Sobre</Link></li>
-                        <li><Link to="/projects" className="hover:underline">Projetos</Link></li>
+                        <li><Link to="/projetos" className="hover:underline">Projetos</Link></li>
                         <li><Link to="/contact" className="hover:underline">Contato</Link></li>
                     </ul>
                 </nav>
@@ -192,7 +192,7 @@ export default function Navbar() {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/projects"
+                                            to="/projetos"
                                             className="block w-full px-4 py-3 rounded hover:bg-primary/5 focus:bg-primary/5 focus:outline-none"
                                             onClick={() => handleMobileToggle(false)}
                                         >
