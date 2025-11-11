@@ -49,17 +49,17 @@ export default function ColorPalette({ colors }: ColorPaletteProps) {
         >
             <h2
                 id="palette-heading"
-                className="font-title text-2xl sm:text-3xl p-4 sm:p-6"
+                className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
             >
                 Paleta de cores
             </h2>
 
-            <div className="flex items-stretch justify-center flex-1">
+            <div className="flex items-stretch justify-center flex-1 max-sm:flex-col">
                 {colorData.map(
                     ({ originalColor, textColor, rgb, cmyk }, index) => (
                         <div
                             key={`${originalColor}-${index}`}
-                            className="w-full h-full flex justify-end flex-col p-4 sm:p-6"
+                            className="flex h-25 w-full flex-col justify-end text-sm sm:h-80 lg:h-full pb-3 px-4 sm:text-base"
                             style={{ backgroundColor: originalColor }}
                             title={originalColor}
                         >
