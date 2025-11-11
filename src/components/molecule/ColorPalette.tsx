@@ -59,7 +59,7 @@ export default function ColorPalette({ colors }: ColorPaletteProps) {
                     ({ originalColor, textColor, rgb, cmyk }, index) => (
                         <div
                             key={`${originalColor}-${index}`}
-                            className="flex h-25 w-full flex-col justify-end text-sm sm:h-80 lg:h-full pb-3 px-4 sm:text-base"
+                            className="flex h-25 w-full flex-col justify-end text-sm sm:h-80 lg:h-full pb-3 px-4"
                             style={{ backgroundColor: originalColor }}
                             title={originalColor}
                         >
