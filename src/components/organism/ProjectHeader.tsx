@@ -12,7 +12,7 @@ export default function ProjectHeader({ projectId, prevProject, nextProject }: {
         </Link>
       </div>
 
-      <p className="flex-1 text-center font-medium text-2xl font-title">Projeto {projectId.padStart(2, '0')}</p>
+      <p className="flex-1 text-center text-2xl xl:text-3xl font-title">Projeto {projectId.padStart(2, '0')}</p>
 
       <div className="flex items-center space-x-2">
         {prevProject ? (
