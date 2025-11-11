@@ -11,7 +11,7 @@ export default function About() {
                         Quem sou?
                     </h2>
                     <p className="text-lg sm:text-xl font-light">
-                        Olá, sou Procópio, tenho 19 anos e estou em desenvolvimento como designer. Atualmente curso o 4°
+                        Olá, sou Procópio, tenho 20 anos e estou em desenvolvimento como designer. Atualmente curso o 4°
                         semestre do bacharelado em Design, onde venho criando projetos autorais e buscando oportunidades
                         em freelances. No momento, meu foco é ampliar meu portfólio e conquistar uma vaga de estágio em um
                         estúdio de design, para evoluir profissionalmente e viabilizar meus estudos. Como designer, meu
