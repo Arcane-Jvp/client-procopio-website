@@ -32,41 +32,7 @@ export default function ProjectPage() {
 
   return (
     <main className="max-w-400 mx-auto p-5 mt-16 text-primary space-y-4">
-
-      <div className="rounded-xl bg-foreground p-3 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
-          {/* Icone de home */}
-          <Link to="/projetos" aria-label="Ir para projetos" className="p-2 rounded-md hover:bg-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary">
-            <Home size={20} aria-hidden />
-          </Link>
-        </div>
-
-        <p className="flex-1 text-center font-medium text-2xl font-title">Projeto {project.id.padStart(2, '0')}</p>
-
-        <div className="flex items-center space-x-2">
-          {/* Anterior */}
-          {prevProject ? (
-            <Link to={`/projetos/${prevProject.id}`} aria-label={`Projeto anterior ${prevProject.title ?? prevProject.id}`} className="p-2 rounded-md hover:bg-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary">
-              <ChevronLeft size={18} aria-hidden />
-            </Link>
-          ) : (
-            <button disabled className="p-2 rounded-md opacity-40 cursor-not-allowed" aria-hidden>
-              <ChevronLeft size={18} />
-            </button>
-          )}
-
-          {/* Próximo */}
-          {nextProject ? (
-            <Link to={`/projetos/${nextProject.id}`} aria-label={`Próximo projeto ${nextProject.title ?? nextProject.id}`} className="p-2 rounded-md hover:bg-foreground/50 focus:outline-none focus:ring-2 focus:ring-primary">
-              <ChevronRight size={18} aria-hidden />
-            </Link>
-          ) : (
-            <button disabled className="p-2 rounded-md opacity-40 cursor-not-allowed" aria-hidden>
-              <ChevronRight size={18} />
-            </button>
-          )}
-        </div>
-      </div>
+      <ProjectHeader projectId={project.id} prevProject={prevProject} nextProject={nextProject} />
 
       <div className="flex items-stretch justify-center space-x-4">
         {typeof project.src === 'string' ? (
@@ -92,21 +58,7 @@ export default function ProjectPage() {
             {/* Renderiza a descrição em parágrafos e listas (não altera aparência) */}
             <ProjectDescription description={project.description ?? undefined} />
           </div>
-          {Array.isArray(project.content?.['Paleta de cores']) && (
-            <div className='bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col'>
-              <h2 id="palette-heading" className="font-title text-2xl sm:text-3xl p-4 sm:p-6">
-                Paleta de cores
-              </h2>
-
-              <div className='flex items-stretch justify-center flex-1'>
-                {project.content?.['Paleta de cores'].map((color, index) => (
-                  <div key={index} className='w-full h-full flex items-end' style={{ backgroundColor: color }} title={color}>
-                    <p>{color}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <ColorPalette colors={project.content?.['Paleta de cores'] as string[] | undefined} />
         </div>
       </div>
     </main>
