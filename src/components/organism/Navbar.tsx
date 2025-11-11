@@ -103,11 +103,11 @@ export default function Navbar() {
     }, [mobileOpen]);
 
     const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo(0, 0)
     }
 
     return (
-        <div className="fixed top-0 left-0 right-0 h-16 z-50 bg-accent">
+        <div className="fixed top-0 left-0 right-0 h-16 z-50 bg-accent" style={{ contain: 'layout style paint' }}>
             <div className="w-full px-8 h-full flex items-center justify-between text-primary">
                 <div className="flex items-center gap-4">
                     <Link to="/" onClick={scrollToTop} className="w-15 focus:outline-none focus:ring-2 focus:ring-primary/10 rounded" aria-label="Voltar ao topo">
