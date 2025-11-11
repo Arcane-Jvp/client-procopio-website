@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import LogoMl from '../components/atom/LogoMl'
+import LogoMl from '@/components/atom/LogoMl'
 
 export interface ProjectItem {
   id: string
