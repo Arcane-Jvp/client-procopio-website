@@ -1,5 +1,5 @@
 import { getResponsiveImageUrls } from "@/utils/cloudinary";
-import CachedImage from "@/components/atom/CachedImage";
+import CachedImage from "@/components/atom/OtimizedImage";
 
 const profileImage = getResponsiveImageUrls(
   {
