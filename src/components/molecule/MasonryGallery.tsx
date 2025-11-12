@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import CachedImage from "@/components/atom/CachedImage";
+import CachedImage from "@/components/atom/OtimizedImage";
 
 interface MasonryImage {
   id: string;

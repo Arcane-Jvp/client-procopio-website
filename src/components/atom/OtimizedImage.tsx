@@ -1,8 +1,7 @@
 import type { ImgHTMLAttributes, CSSProperties } from "react";
 import { useState } from "react";
-import { useCachedImage } from "@/hooks/useCachedImage";
 
-interface CachedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'style'> {
+interface OtimizedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'style'> {
   src: string;
   alt: string;
   placeholderSrc?: string;
@@ -14,7 +13,7 @@ interface CachedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'st
   containerStyle?: CSSProperties;
 }
 
-export default function CachedImage({
+export default function OtimizedImage({
   src,
   alt,
   placeholderSrc,
@@ -28,15 +27,8 @@ export default function CachedImage({
   containerClassName = "",
   containerStyle,
   ...props
-}: CachedImageProps) {
-  const { blobUrl, isLoading, error } = useCachedImage(src);
+}: OtimizedImageProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
-
-  if (error) {
-    console.warn(`Failed to load image: ${src}`, error);
-  }
-
-  const showPlaceholder = placeholderSrc && (isLoading || !imageLoaded);
 
   const baseContainerStyle: CSSProperties = {
     position: "relative",
@@ -55,22 +47,22 @@ export default function CachedImage({
     objectFit: "cover",
     filter: "blur(20px)",
     transform: "scale(1.1)",
-    transition: "opacity 0.3s ease-out",
+    transition: "opacity 0.4s ease-out",
     opacity: imageLoaded ? 0 : 1,
     pointerEvents: "none",
+    visibility: imageLoaded ? "hidden" : "visible",
   };
 
   const imageStyle: CSSProperties = {
     width: "100%",
     height: "100%",
     objectFit,
-    transition: "opacity 0.3s ease-in",
     opacity: imageLoaded ? 1 : 0,
   };
 
   return (
     <div className={containerClassName} style={baseContainerStyle}>
-      {showPlaceholder && (
+      {placeholderSrc && (
         <img
           src={placeholderSrc}
           alt=""
@@ -79,7 +71,7 @@ export default function CachedImage({
         />
       )}
       <img
-        src={blobUrl || src}
+        src={src}
         srcSet={srcSet}
         sizes={sizes}
         alt={alt}
