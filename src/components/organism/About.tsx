@@ -18,7 +18,7 @@ const profileImage = getResponsiveImageUrls(
 
 const notebookImage = getResponsiveImageUrls(
   {
-    publicId: "Card_notebook_y0zksg.png",
+    publicId: "Card_xwv1hp.png",
     size: "medium",
   },
   "(max-width: 1024px) 100vw, 50vw",
@@ -26,7 +26,7 @@ const notebookImage = getResponsiveImageUrls(
 
 const stickerImage = getResponsiveImageUrls(
   {
-    publicId: "Card_adesivo_fl7jei.png",
+    publicId: "Card_adesivo_uqegwn.png",
     size: "medium",
   },
   "(max-width: 1024px) 100vw, 33vw",
