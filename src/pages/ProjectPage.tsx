@@ -88,6 +88,37 @@ export default function ProjectPage() {
             colors={project.content?.palette as string[] | undefined}
           />
         </div>
+
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {project.content?.galleryImages.map((image, index) => (
+          <div
+            key={`gallery-item-${index}`}
+            role="region"
+            aria-labelledby={`gallery-heading-${index}`}
+            className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
+          >
+            <h2
+              id={`gallery-heading-${index}`}
+              className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
+            >
+              {image.title}
+            </h2>
+
+            <div className="flex items-stretch justify-center flex-1 max-sm:flex-col">
+              <CachedImage
+                key={`gallery-image-${index}`}
+                src={image.image.src}
+                srcSet={image.image.srcSet}
+                placeholderSrc={image.image.placeholderSrc}
+                sizes={image.image.sizes}
+                alt={`${altText} - ${image.title}`}
+                objectFit="contain"
+                containerClassName="lg:max-w-180"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </main>
   );
