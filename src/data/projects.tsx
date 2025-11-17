@@ -12,7 +12,7 @@ export interface ProjectItem {
   description?: string;
   content?: {
     palette: string[];
-    images: ResponsiveImageUrls[];
+    galleryImages: { title: string; image: ResponsiveImageUrls }[];
   };
   srcSet?: string;
   placeholderSrc?: string;
