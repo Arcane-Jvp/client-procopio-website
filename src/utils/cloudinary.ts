@@ -2,7 +2,7 @@ const CLOUDINARY_CONFIG = {
   cloud_name: "dfuzu0ds1",
   base_url: "https://res.cloudinary.com/dfuzu0ds1/image/upload",
   default_transformations: {
-    q: "auto:good",
+    q: "auto:best",
     f: "auto",
     dpr: "auto",
     c: "limit",
@@ -19,7 +19,7 @@ interface ImageConfig {
   size?: ImageSize;
 }
 
-interface ResponsiveImageUrls {
+export interface ResponsiveImageUrls {
   src: string;
   srcSet: string;
   placeholderSrc: string;
@@ -28,8 +28,8 @@ interface ResponsiveImageUrls {
 
 const SIZE_PRESETS: Record<ImageSize, CloudinaryTransformations> = {
   thumbnail: { w: 300, q: "auto:low" },
-  small: { w: 640, q: "auto:good" },
-  medium: { w: 1024, q: "auto:good" },
+  small: { w: 640, q: "auto:best" },
+  medium: { w: 1024, q: "auto:best" },
   large: { w: 1920, q: "auto:best" },
   full: { w: 2560, q: "auto:best" },
 };
@@ -81,8 +81,8 @@ function buildPlaceholderUrl(
 
   return buildCloudinaryUrl(publicId, {
     w: 40,
-    q: "auto:low",
-    e: "blur:1000",
+    q: "auto:good",
+    e: "blur:500",
     ...validCropTransforms,
   });
 }
