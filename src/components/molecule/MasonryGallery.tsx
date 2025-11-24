@@ -9,6 +9,10 @@ interface MasonryImage {
   srcSet?: string;
   placeholderSrc?: string;
   sizes?: string;
+  gridLayout?: {
+    height?: 'full' | 'half';
+    splitWithNext?: boolean;
+  };
 }
 
 interface MasonryGalleryProps {
