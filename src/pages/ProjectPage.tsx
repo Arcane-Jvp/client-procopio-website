@@ -91,34 +91,103 @@ export default function ProjectPage() {
 
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {project.content?.galleryImages.map((image, index) => (
-          <div
-            key={`gallery-item-${index}`}
-            role="region"
-            aria-labelledby={`gallery-heading-${index}`}
-            className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
-          >
-            <h2
-              id={`gallery-heading-${index}`}
-              className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
-            >
-              {image.title}
-            </h2>
-
-            <div className="flex items-stretch justify-center flex-1 max-sm:flex-col">
-              <CachedImage
-                key={`gallery-image-${index}`}
-                src={image.image.src}
-                srcSet={image.image.srcSet}
-                placeholderSrc={image.image.placeholderSrc}
-                sizes={image.image.sizes}
-                alt={`${altText} - ${image.title}`}
-                objectFit="contain"
-                containerClassName="lg:max-w-180"
-              />
-            </div>
-          </div>
-        ))}
+        {(() => {
+          const renderGalleryItems = () => {
+            const result: ReactNode[] = [];
+            let i = 0;
+            const images = project.content?.galleryImages || [];
+            while (i < images.length) {
+              const image = images[i];
+              if (image.layout?.splitWithNext && i + 1 < images.length) {
+                const nextImage = images[i + 1];
+                result.push(
+                  <div
+                    key={`gallery-pair-${i}`}
+                    className="md:col-span-1 space-y-4"
+                  >
+                    <div
+                      role="region"
+                      aria-labelledby={`gallery-heading-${i}`}
+                      className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
+                    >
+                      <h2
+                        id={`gallery-heading-${i}`}
+                        className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
+                      >
+                        {image.title}
+                      </h2>
+                      <div className="flex items-stretch justify-center flex-1 max-sm:flex-col bg-foreground-tint" style={image.layout?.padding ? { paddingTop: image.layout.padding, paddingBottom: image.layout.padding } : undefined}>
+                        <CachedImage
+                          src={image.image.src}
+                          srcSet={image.image.srcSet}
+                          placeholderSrc={image.image.placeholderSrc}
+                          sizes={image.image.sizes}
+                          alt={`${altText} - ${image.title}`}
+                          objectFit="contain"
+                          containerClassName={`lg:max-w-180 ${image.layout?.height === 'half' ? 'h-48' : ''}`}
+                        />
+                      </div>
+                    </div>
+                    <div
+                      role="region"
+                      aria-labelledby={`gallery-heading-${i + 1}`}
+                      className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
+                    >
+                      <h2
+                        id={`gallery-heading-${i + 1}`}
+                        className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
+                      >
+                        {nextImage.title}
+                      </h2>
+                      <div className="flex items-stretch justify-center flex-1 max-sm:flex-col bg-foreground-tint" style={nextImage.layout?.padding ? { paddingTop: nextImage.layout.padding, paddingBottom: nextImage.layout.padding } : undefined}>
+                        <CachedImage
+                          src={nextImage.image.src}
+                          srcSet={nextImage.image.srcSet}
+                          placeholderSrc={nextImage.image.placeholderSrc}
+                          sizes={nextImage.image.sizes}
+                          alt={`${altText} - ${nextImage.title}`}
+                          objectFit="contain"
+                          containerClassName={`lg:max-w-180 ${nextImage.layout?.height === 'half' ? 'h-48' : ''}`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                );
+                i += 2;
+              } else {
+                result.push(
+                  <div
+                    key={`gallery-item-${i}`}
+                    role="region"
+                    aria-labelledby={`gallery-heading-${i}`}
+                    className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
+                  >
+                    <h2
+                      id={`gallery-heading-${i}`}
+                      className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
+                    >
+                      {image.title}
+                    </h2>
+                    <div className="flex items-stretch justify-center flex-1 max-sm:flex-col" style={image.layout?.padding ? { paddingTop: image.layout.padding, paddingBottom: image.layout.padding } : undefined}>
+                      <CachedImage
+                        src={image.image.src}
+                        srcSet={image.image.srcSet}
+                        placeholderSrc={image.image.placeholderSrc}
+                        sizes={image.image.sizes}
+                        alt={`${altText} - ${image.title}`}
+                        objectFit="contain"
+                        containerClassName={`lg:max-w-180 ${image.layout?.height === 'half' ? 'h-48' : ''}`}
+                      />
+                    </div>
+                  </div>
+                );
+                i++;
+              }
+            }
+            return result;
+          };
+          return renderGalleryItems();
+        })()}
       </div>
     </main>
   );
