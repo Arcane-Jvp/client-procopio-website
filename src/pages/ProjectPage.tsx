@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from "react";
+import { useMemo, useEffect, type ReactNode } from "react";
 import { useParams, Link } from "react-router-dom";
 import projects from "@/data/projects";
 import ProjectDescription from "@/components/molecule/ProjectDescription";
