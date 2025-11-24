@@ -117,6 +117,7 @@ export const projects: ProjectItem[] = [
             publicId: "Porche_snbcjv.png",
             size: "large",
           }),
+          layout: { splitWithNext: true, height: 'half' },
         },
         {
           title: "Foto editada",
@@ -124,6 +125,7 @@ export const projects: ProjectItem[] = [
             publicId: "Edit_Porsche_h02aj8.png",
             size: "large",
           }),
+          layout: { height: 'half', padding: '1rem' },
         },
       ],
     },
