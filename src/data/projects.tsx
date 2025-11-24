@@ -12,7 +12,7 @@ export interface ProjectItem {
   description?: string;
   content?: {
     palette: string[];
-    galleryImages: { title: string; image: ResponsiveImageUrls }[];
+    galleryImages: { title: string; image: ResponsiveImageUrls; layout?: { height?: 'full' | 'half'; splitWithNext?: boolean; padding?: string } }[];
   };
   srcSet?: string;
   placeholderSrc?: string;
@@ -96,7 +96,38 @@ export const projects: ProjectItem[] = [
       "Peça gráfica inspirada no modelo Porsche 911 GT3. A imagem do veículo foi capturada no jogo Forza Horizon 5. Todas informações utilizadas foram baseadas no site oficial da Porsche, garantindo autenticidade. A composição destaca o caráter esportivo do modelo por meio de: > Paleta de cores quase monocromática. > Equilíbrio visual. > Clareza informativa. Resultado: pôster que une simplicidade estética e valorização dos atributos do veículo.",
     content: {
       palette: ["#46518C", "#79A2F2", "#57B7F2", "#D96704", "#F2F2F2"],
-      galleryImages: [],
+      galleryImages: [
+        {
+          title: "Fundo",
+          image: getResponsiveImageUrls({
+            publicId: "Fundo_Porsche_wjwsig.png",
+            size: "large",
+          }),
+        },
+        {
+          title: "Conteúdo textual",
+          image: getResponsiveImageUrls({
+            publicId: "Texto_Porsche_yg5ijc.png",
+            size: "large",
+          }),
+        },
+        {
+          title: "Foto sem edição",
+          image: getResponsiveImageUrls({
+            publicId: "Porche_snbcjv.png",
+            size: "large",
+          }),
+          layout: { splitWithNext: true, height: 'half' },
+        },
+        {
+          title: "Foto editada",
+          image: getResponsiveImageUrls({
+            publicId: "Edit_Porsche_h02aj8.png",
+            size: "large",
+          }),
+          layout: { height: 'half', padding: '1rem' },
+        },
+      ],
     },
   },
   {
