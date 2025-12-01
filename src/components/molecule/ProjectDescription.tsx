@@ -6,8 +6,10 @@ type DescriptionBlock =
 
 export default function ProjectDescription({
   description,
+  title,
 }: {
   description?: string | null;
+  title?: string;
 }) {
   // Memoize parsing para manter hooks na mesma ordem
   const blocks = useMemo((): DescriptionBlock[] => {
@@ -50,10 +52,16 @@ export default function ProjectDescription({
     return result;
   }, [description]);
 
-  if (blocks.length === 0) return null;
+  if (!title && blocks.length === 0) return null;
 
   return (
-    <>
+    <div className="bg-foreground rounded-xl p-4 xl:p-6 space-y-3">
+      {title && (
+        <h2 id="about-heading" className="font-title text-2xl xl:text-3xl">
+          {title}
+        </h2>
+      )}
+
       {blocks.map((b, i) => {
         if (b.type === "paragraph") {
           return (
@@ -83,6 +91,6 @@ export default function ProjectDescription({
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
