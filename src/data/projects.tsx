@@ -11,15 +11,98 @@ export interface ProjectItem {
   title?: string;
   description?: string;
   content?: {
-    palette: string[];
-    galleryImages: { title: string; image: ResponsiveImageUrls; layout?: { height?: 'full' | 'half'; splitWithNext?: boolean; padding?: string } }[];
+    palette?: string[];
+    galleryImages?: { title: string; image: ResponsiveImageUrls; layout?: { height?: 'full' | 'half'; splitWithNext?: boolean; padding?: string } }[];
+    comments?: { name: string; date: string; comment: string; photo: ResponsiveImageUrls }[];
   };
   srcSet?: string;
   placeholderSrc?: string;
   sizes?: string;
 }
 
-// Image URLs
+// Gallery images definitions
+const babyDriverGallery = [
+  {
+    title: "Foto base",
+    image: getResponsiveImageUrls({
+      publicId: "Base_Poster_Retrato_xtp8hc.jpg",
+      size: "large",
+    }),
+  },
+  {
+    title: "Foto editada",
+    image: getResponsiveImageUrls({
+      publicId: "Edit_Poster_Retrato_iiu9ww.png",
+      size: "large",
+    }),
+  },
+  {
+    title: "Conteúdo textual",
+    image: getResponsiveImageUrls({
+      publicId: "Texto_Poster_Retrato_lq41yw.png",
+      size: "large",
+    }),
+  },
+];
+
+const porscheGallery = [
+  {
+    title: "Fundo",
+    image: getResponsiveImageUrls({
+      publicId: "Fundo_Porsche_wjwsig.png",
+      size: "large",
+    }),
+  },
+  {
+    title: "Conteúdo textual",
+    image: getResponsiveImageUrls({
+      publicId: "Texto_Porsche_yg5ijc.png",
+      size: "large",
+    }),
+  },
+  {
+    title: "Foto sem edição",
+    image: getResponsiveImageUrls({
+      publicId: "Porche_snbcjv.png",
+      size: "large",
+    }),
+    layout: { splitWithNext: true, height: 'half' },
+  },
+  {
+    title: "Foto editada",
+    image: getResponsiveImageUrls({
+      publicId: "Edit_Porsche_h02aj8.png",
+      size: "large",
+    }),
+    layout: { height: 'half', padding: '1rem' },
+  },
+];
+
+const hazardGallery = [
+  {
+    title: "Fundo",
+    image: getResponsiveImageUrls({
+      publicId: "Fundo_Hazard-t5_sx1slm.png",
+      size: "large",
+    }),
+  },
+  {
+    title: "Personagem",
+    image: getResponsiveImageUrls({
+      publicId: "Personagem_Hazard-t5_sc8gds.png",
+      size: "large",
+    }),
+  },
+  {
+    title: "Conteúdo textual",
+    image: getResponsiveImageUrls({
+      publicId: "Texto_Hazard-t5_dzn9en.png",
+      size: "large",
+    }),
+  },
+];
+
+// Main image URLs
 const babyDriverPosterImage = getResponsiveImageUrls({
   publicId: "Final_Poster_Retrato_cuoljq.png",
   size: "large",
@@ -35,6 +118,11 @@ const hazardPosterImage = getResponsiveImageUrls({
   size: "large",
 });
 
+const commentLogoMP = getResponsiveImageUrls({
+  publicId: "IMG_20250830_164119-1x1_fdfxbz.jpg",
+  size: "small",
+});
+
 export const projects: ProjectItem[] = [
   {
     id: "1",
@@ -45,29 +133,7 @@ export const projects: ProjectItem[] = [
       "Projeto desenvolvido na disciplina de Introdução à Tipografia. Objetivo: criar um retrato tipográfico do personagem principal do filme Em Ritmo de Fuga (Baby Driver). Construção da imagem utilizando apenas frases, palavras e atributos que representam a persona do personagem. A composição explora o contraste entre cores vibrantes e a silhueta escura. Resultado: peça que une linguagem textual e identidade visual, mostrando a tipografia como forma expressiva.",
     content: {
       palette: ["#1D1D1B", "#D93250", "#E0D8A3", "#D7D0BE"],
-      galleryImages: [
-        {
-          title: "Foto base",
-          image: getResponsiveImageUrls({
-            publicId: "Base_Poster_Retrato_xtp8hc.jpg",
-            size: "large",
-          }),
-        },
-        {
-          title: "Foto editada",
-          image: getResponsiveImageUrls({
-            publicId: "Edit_Poster_Retrato_iiu9ww.png",
-            size: "large",
-          }),
-        },
-        {
-          title: "Conteúdo textual",
-          image: getResponsiveImageUrls({
-            publicId: "Texto_Poster_Retrato_lq41yw.png",
-            size: "large",
-          }),
-        },
-      ],
+      galleryImages: babyDriverGallery,
     },
   },
   {
@@ -83,8 +149,14 @@ export const projects: ProjectItem[] = [
     description:
       "Logo desenvolvida para uso pessoal de um cliente. Construída a partir das iniciais do nome do cliente, no caso o M e L. Estruturada com simetria geométrica para transmitir equilíbrio, precisão e profissionalismo. Inclui estrelas de quatro pontas como referência a logos anteriores do cliente. Resultado: identidade visual que une modernidade e resgate histórico da marca pessoal do cliente.",
     content: {
-      palette: [],
-      galleryImages: [],
+      comments: [
+        {
+          name: "Marcos Lopes",
+          date: "15/07/2025",
+          comment: "Gostei muito da logo, ficou perfeita para o meu trabalho, vou fazer um redesign da marca e começar a usar ela 😁🙏🏻",
+          photo: commentLogoMP,
+        },
+      ],
     },
   },
   {
@@ -96,38 +168,7 @@ export const projects: ProjectItem[] = [
       "Peça gráfica inspirada no modelo Porsche 911 GT3. A imagem do veículo foi capturada no jogo Forza Horizon 5. Todas informações utilizadas foram baseadas no site oficial da Porsche, garantindo autenticidade. A composição destaca o caráter esportivo do modelo por meio de: > Paleta de cores quase monocromática. > Equilíbrio visual. > Clareza informativa. Resultado: pôster que une simplicidade estética e valorização dos atributos do veículo.",
     content: {
       palette: ["#46518C", "#79A2F2", "#57B7F2", "#D96704", "#F2F2F2"],
-      galleryImages: [
-        {
-          title: "Fundo",
-          image: getResponsiveImageUrls({
-            publicId: "Fundo_Porsche_wjwsig.png",
-            size: "large",
-          }),
-        },
-        {
-          title: "Conteúdo textual",
-          image: getResponsiveImageUrls({
-            publicId: "Texto_Porsche_yg5ijc.png",
-            size: "large",
-          }),
-        },
-        {
-          title: "Foto sem edição",
-          image: getResponsiveImageUrls({
-            publicId: "Porche_snbcjv.png",
-            size: "large",
-          }),
-          layout: { splitWithNext: true, height: 'half' },
-        },
-        {
-          title: "Foto editada",
-          image: getResponsiveImageUrls({
-            publicId: "Edit_Porsche_h02aj8.png",
-            size: "large",
-          }),
-          layout: { height: 'half', padding: '1rem' },
-        },
-      ],
+      galleryImages: porscheGallery,
     },
   },
   {
@@ -139,29 +180,7 @@ export const projects: ProjectItem[] = [
       "Pôster desenvolvido em parceria com o artista Itzo responsável pela ilustração do personagem Hazard. Projeto criado para divulgar o RPG Mundo Titânico, ainda em produção. A composição explora: > Uso expressivo da tipografia. > Forte contraste de cores para destaque visual. > Aplicação de texturas para dar identidade e diferenciação. Resultado: peça promocional que valoriza o personagem principal e fortalece a divulgação do universo do RPG.",
     content: {
       palette: ["#3B0273", "#2E0259", "#F2E638", "#F20505", "#A60303"],
-      galleryImages: [
-        {
-          title: "Fundo",
-          image: getResponsiveImageUrls({
-            publicId: "Fundo_Hazard-t5_sx1slm.png",
-            size: "large",
-          })
-        },
-        {
-          title: "Personagem",
-          image: getResponsiveImageUrls({
-            publicId: "Personagem_Hazard-t5_sc8gds.png",
-            size: "large",
-          })
-        },
-        {
-          title: "Conteúdo textual",
-          image: getResponsiveImageUrls({
-            publicId: "Texto_Hazard-t5_dzn9en.png",
-            size: "large",
-          })
-        }
-      ],
+      galleryImages: hazardGallery,
     },
   },
 ];

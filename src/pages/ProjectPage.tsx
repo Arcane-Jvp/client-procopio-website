@@ -1,10 +1,13 @@
-import { useMemo, useEffect, type ReactNode } from "react";
+import { useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import projects from "@/data/projects";
 import ProjectDescription from "@/components/molecule/ProjectDescription";
 import ColorPalette from "@/components/molecule/ColorPalette";
 import ProjectHeader from "@/components/organism/ProjectHeader";
 import CachedImage from "@/components/atom/OtimizedImage";
+import ProjectGallery from "@/components/molecule/ProjectGallery";
+import ProjectFeedback from "@/components/molecule/ProjectFeedback";
+import type { ProjectItem } from "@/data/projects";
 
 export default function ProjectPage() {
   const { id } = useParams<{ id?: string }>();
@@ -14,7 +17,10 @@ export default function ProjectPage() {
     window.scrollTo({ top: 0 });
   }, [id]);
 
-  const project = useMemo(() => projects.find((p) => p.id === id), [id]);
+  const project = useMemo<ProjectItem | undefined>(
+    () => projects.find((p) => p.id === id),
+    [id]
+  );
 
   if (!project) {
     return (
@@ -74,120 +80,27 @@ export default function ProjectPage() {
         )}
 
         <div className="space-y-4 flex items-stretch flex-col">
-          <div className="bg-foreground rounded-xl p-4 xl:p-6 space-y-3">
-            <h2 id="about-heading" className="font-title text-2xl xl:text-3xl">
-              {project.title}
-            </h2>
-
-            {/* Renderiza a descrição em parágrafos e listas (não altera aparência) */}
-            <ProjectDescription
-              description={project.description ?? undefined}
-            />
-          </div>
+          <ProjectDescription
+            title={project.title}
+            description={project.description ?? undefined}
+          />
           <ColorPalette
             colors={project.content?.palette as string[] | undefined}
           />
+          {project.content?.comments && (
+            <ProjectFeedback
+              comments={project.content?.comments ?? []}
+              headingId="feedback-heading"
+            />
+          )}
         </div>
 
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {(() => {
-          const renderGalleryItems = () => {
-            const result: ReactNode[] = [];
-            let i = 0;
-            const images = project.content?.galleryImages || [];
-            while (i < images.length) {
-              const image = images[i];
-              if (image.layout?.splitWithNext && i + 1 < images.length) {
-                const nextImage = images[i + 1];
-                result.push(
-                  <div
-                    key={`gallery-pair-${i}`}
-                    className="md:col-span-1 space-y-4"
-                  >
-                    <div
-                      role="region"
-                      aria-labelledby={`gallery-heading-${i}`}
-                      className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
-                    >
-                      <h2
-                        id={`gallery-heading-${i}`}
-                        className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
-                      >
-                        {image.title}
-                      </h2>
-                      <div className="flex items-stretch justify-center flex-1 max-sm:flex-col bg-foreground-tint" style={image.layout?.padding ? { paddingTop: image.layout.padding, paddingBottom: image.layout.padding } : undefined}>
-                        <CachedImage
-                          src={image.image.src}
-                          srcSet={image.image.srcSet}
-                          placeholderSrc={image.image.placeholderSrc}
-                          sizes={image.image.sizes}
-                          alt={`${altText} - ${image.title}`}
-                          objectFit="contain"
-                          containerClassName={`lg:max-w-180 ${image.layout?.height === 'half' ? 'h-48' : ''}`}
-                        />
-                      </div>
-                    </div>
-                    <div
-                      role="region"
-                      aria-labelledby={`gallery-heading-${i + 1}`}
-                      className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
-                    >
-                      <h2
-                        id={`gallery-heading-${i + 1}`}
-                        className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
-                      >
-                        {nextImage.title}
-                      </h2>
-                      <div className="flex items-stretch justify-center flex-1 max-sm:flex-col bg-foreground-tint" style={nextImage.layout?.padding ? { paddingTop: nextImage.layout.padding, paddingBottom: nextImage.layout.padding } : undefined}>
-                        <CachedImage
-                          src={nextImage.image.src}
-                          srcSet={nextImage.image.srcSet}
-                          placeholderSrc={nextImage.image.placeholderSrc}
-                          sizes={nextImage.image.sizes}
-                          alt={`${altText} - ${nextImage.title}`}
-                          objectFit="contain"
-                          containerClassName={`lg:max-w-180 ${nextImage.layout?.height === 'half' ? 'h-48' : ''}`}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-                i += 2;
-              } else {
-                result.push(
-                  <div
-                    key={`gallery-item-${i}`}
-                    role="region"
-                    aria-labelledby={`gallery-heading-${i}`}
-                    className="bg-foreground rounded-xl flex-1 pb-4 sm:pb-6 flex items-stretch flex-col"
-                  >
-                    <h2
-                      id={`gallery-heading-${i}`}
-                      className="font-title text-2xl xl:text-3xl p-4 xl:p-6"
-                    >
-                      {image.title}
-                    </h2>
-                    <div className="flex items-stretch justify-center flex-1 max-sm:flex-col" style={image.layout?.padding ? { paddingTop: image.layout.padding, paddingBottom: image.layout.padding } : undefined}>
-                      <CachedImage
-                        src={image.image.src}
-                        srcSet={image.image.srcSet}
-                        placeholderSrc={image.image.placeholderSrc}
-                        sizes={image.image.sizes}
-                        alt={`${altText} - ${image.title}`}
-                        objectFit="contain"
-                        containerClassName={`lg:max-w-180 ${image.layout?.height === 'half' ? 'h-48' : ''}`}
-                      />
-                    </div>
-                  </div>
-                );
-                i++;
-              }
-            }
-            return result;
-          };
-          return renderGalleryItems();
-        })()}
+        <ProjectGallery
+          galleryImages={project.content?.galleryImages || []}
+          altText={altText}
+        />
       </div>
     </main>
   );
