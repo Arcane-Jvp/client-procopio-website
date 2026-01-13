@@ -7,6 +7,7 @@ import ProjectHeader from "@/components/organism/ProjectHeader";
 import CachedImage from "@/components/atom/OtimizedImage";
 import ProjectGallery from "@/components/molecule/ProjectGallery";
 import ProjectFeedback from "@/components/molecule/ProjectFeedback";
+import SEO from "@/components/molecule/Seo";
 import type { ProjectItem } from "@/data/projects";
 
 export default function ProjectPage() {
@@ -50,8 +51,32 @@ export default function ProjectPage() {
       ? projects[currentIndex + 1]
       : projects[0];
 
+  const projectSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "name": project.title,
+    "description": project.description,
+    "image": typeof project.src === "string" ? project.src : undefined,
+    "author": {
+      "@type": "Person",
+      "name": "Procópio"
+    }
+  };
+
   return (
-    <main className="max-w-400 min-h-[calc(100vh-4rem)] mx-auto p-5 mt-16 text-primary space-y-4">
+    <>
+      <SEO
+        title={project.title}
+        description={
+          project.description ||
+          `Projeto ${project.title} desenvolvido por Procópio.`
+        }
+        image={typeof project.src === "string" ? project.src : undefined}
+        url={`https://portcopio.vercel.app/projeto/${project.id}`}
+        type="article"
+        schema={projectSchema}
+      />
+      <main className="max-w-400 min-h-[calc(100vh-4rem)] mx-auto p-5 mt-16 text-primary space-y-4">
       <ProjectHeader
         projectId={project.id}
         prevProject={prevProject}
@@ -103,5 +128,6 @@ export default function ProjectPage() {
         />
       </div>
     </main>
+    </>
   );
 }
