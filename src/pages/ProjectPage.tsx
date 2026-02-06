@@ -76,58 +76,58 @@ export default function ProjectPage() {
         type="article"
         schema={projectSchema}
       />
-      <main className="max-w-400 min-h-[calc(100vh-4rem)] mx-auto p-5 mt-16 text-primary space-y-4">
-      <ProjectHeader
-        projectId={project.id}
-        prevProject={prevProject}
-        nextProject={nextProject}
-      />
-
-      <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
-        {typeof project.src === "string" ? (
-          <CachedImage
-            src={project.src}
-            srcSet={project.srcSet}
-            placeholderSrc={project.placeholderSrc}
-            sizes={project.sizes}
-            alt={altText}
-            objectFit="contain"
-            containerClassName="lg:max-w-180"
-          />
-        ) : (
-          <div
-            role="img"
-            aria-label={altText}
-            className="p-6 lg:max-w-180 w-full bg-foreground rounded-xl"
-          >
-            {project.src}
-          </div>
-        )}
-
-        <div className="space-y-4 flex items-stretch flex-col">
-          <ProjectDescription
-            title={project.title}
-            description={project.description ?? undefined}
-          />
-          <ColorPalette
-            colors={project.content?.palette as string[] | undefined}
-          />
-          {project.content?.comments && (
-            <ProjectFeedback
-              comments={project.content?.comments ?? []}
-              headingId="feedback-heading"
-            />
-          )}
-        </div>
-
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <ProjectGallery
-          galleryImages={project.content?.galleryImages || []}
-          altText={altText}
+      <main className="max-w-400 min-h-[calc(100vh-4rem)] mwdt p-5 mt-16 text-primary space-y-4">
+        <ProjectHeader
+          projectId={project.id}
+          prevProject={prevProject}
+          nextProject={nextProject}
         />
-      </div>
-    </main>
+
+        <div className="flex items-stretch justify-center max-lg:space-y-4 lg:space-x-4 max-lg:flex-col">
+          {typeof project.src === "string" ? (
+            <CachedImage
+              src={project.src}
+              srcSet={project.srcSet}
+              placeholderSrc={project.placeholderSrc}
+              sizes={project.sizes}
+              alt={altText}
+              objectFit="contain"
+              containerClassName="lg:max-w-170"
+            />
+          ) : (
+            <div
+              role="img"
+              aria-label={altText}
+              className="p-6 lg:max-w-170 w-full h-full bg-foreground rounded-xl"
+            >
+              {project.src}
+            </div>
+          )}
+
+          <div className="space-y-4 flex items-stretch flex-col">
+            <ProjectDescription
+              title={project.title}
+              description={project.description ?? undefined}
+            />
+            <ColorPalette
+              colors={project.content?.palette as string[] | undefined}
+            />
+            {project.content?.comments && (
+              <ProjectFeedback
+                comments={project.content?.comments ?? []}
+                headingId="feedback-heading"
+              />
+            )}
+          </div>
+
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <ProjectGallery
+            galleryImages={project.content?.galleryImages || []}
+            altText={altText}
+          />
+        </div>
+      </main>
     </>
   );
 }

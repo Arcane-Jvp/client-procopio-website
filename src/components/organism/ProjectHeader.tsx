@@ -24,7 +24,7 @@ export default function ProjectHeader({
         </Link>
       </div>
 
-      <p className="flex-1 text-center text-2xl xl:text-3xl font-title">
+      <p className="flex-1 text-center text-xl xl:text-2xl font-title">
         Projeto {projectId.padStart(2, "0")}
       </p>
 
