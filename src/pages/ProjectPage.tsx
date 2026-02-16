@@ -1,6 +1,9 @@
 import { useMemo, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import projects from "@/data/projects";
+
+import {projects} from "@/data/projects";
+import type { ProjectItem } from "@/data/projects";
+
 import ProjectDescription from "@/components/molecule/ProjectDescription";
 import ColorPalette from "@/components/molecule/ColorPalette";
 import ProjectHeader from "@/components/organism/ProjectHeader";
@@ -8,7 +11,6 @@ import CachedImage from "@/components/atom/OtimizedImage";
 import ProjectGallery from "@/components/molecule/ProjectGallery";
 import ProjectFeedback from "@/components/molecule/ProjectFeedback";
 import SEO from "@/components/molecule/Seo";
-import type { ProjectItem } from "@/data/projects";
 
 export default function ProjectPage() {
   const { id } = useParams<{ id?: string }>();
