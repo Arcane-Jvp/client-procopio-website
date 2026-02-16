@@ -72,7 +72,7 @@ export default function ProjectPage() {
           `Projeto ${project.title} desenvolvido por Procópio.`
         }
         image={typeof project.src === "string" ? project.src : undefined}
-        url={`https://portcopio.vercel.app/projeto/${project.id}`}
+        url={`https://procoopio.com.br/projeto/${project.id}`}
         type="article"
         schema={projectSchema}
       />

@@ -1,4 +1,56 @@
-import Logo from "@/components/atom/Logo";
+﻿import Logo from "@/components/atom/Logo";
+import SocialLinks from "@/components/molecule/SocialLinks";
+import { SITE } from "@/data/site";
+
+function FooterBackgroundLogo() {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex items-center overflow-hidden absolute left-0 top-0 bottom-0 right-0 h-full pointer-events-none"
+    >
+      <Logo className="h-90 sm:h-120 w-full text-footer-logo" ariaLabel="Logo" />
+    </div>
+  );
+}
+
+function FooterIntro() {
+  return (
+    <div className="col-span-6 flex flex-col items-center justify-start gap-2 text-center md:col-span-3 md:items-start md:text-left">
+      <h2 className="hidden font-title text-3xl md:block md:text-5xl">
+        {SITE.name}
+      </h2>
+      <p className="hidden max-w-sm text-lg text-white/90 md:block">
+        Designer em busca de ascensão.
+        <br />
+        Design gráfico e UX design.
+      </p>
+
+      <p className="font-title text-lg md:hidden">Entre em contato</p>
+
+      <nav aria-label="Redes sociais" className="max-md:-mt-1 md:pt-2">
+        <SocialLinks listClassName="flex items-center justify-center gap-8 md:gap-4.5 md:justify-start" />
+      </nav>
+    </div>
+  );
+}
+
+function FooterContact() {
+  return (
+    <div className="col-span-6 hidden flex-col justify-start gap-2 text-right md:flex md:col-span-3">
+      <p className="text-lg text-white/90">
+        Entre em contato para colocar as ideias em prática.
+        <br />
+        À disposição para o trabalho.
+      </p>
+      <a
+        href={`mailto:${SITE.email}`}
+        className="font-title text-2xl sm:text-[32px] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent-muted rounded"
+      >
+        {SITE.email}
+      </a>
+    </div>
+  );
+}
 
 export default function Footer() {
   // TODO: Melhorar responsividade aumentando o tamanho do grid
@@ -10,90 +62,11 @@ export default function Footer() {
       aria-label="Rodapé"
       className="bg-accent grid grid-cols-6 py-[11vw] md:py-20 overflow-y-hidden relative"
     >
-      <div
-        aria-hidden="true"
-        className="flex items-center overflow-hidden absolute left-0 top-0 bottom-0 right-0 h-full pointer-events-none"
-      >
-        <Logo
-          className="h-90 sm:h-120 w-full text-footer-logo"
-          ariaLabel="Logo"
-        />
-      </div>
+      <FooterBackgroundLogo />
 
       <div className="z-2 col-span-6 flex h-full flex-col items-center justify-center px-6 text-white mwdt footer md:grid md:grid-cols-6">
-        <div className="col-span-6 flex flex-col items-center justify-start gap-2 text-center md:col-span-3 md:items-start md:text-left">
-          <h2 className="hidden font-title text-3xl md:block md:text-5xl">
-            Procópio
-          </h2>
-          <p className="hidden max-w-sm text-lg text-white/90 md:block">
-            Designer em busca de ascensão.
-            <br />
-            Design gráfico e UX design.
-          </p>
-
-          <p className="font-title text-lg md:hidden">Entre em contato</p>
-
-          <nav aria-label="Redes sociais" className="max-md:-mt-1 md:pt-2">
-            <ul className="flex items-center justify-center gap-8 md:gap-4.5 md:justify-start">
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/jo%C3%A3o-victor-proc%C3%B3pio-dos-santos-540095294"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="flex items-center justify-center rounded-sm text-accent-muted hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-accent-muted"
-                >
-                  <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true">
-                    <path d="M0 2.50688C0 1.12219 1.15062 0 2.57031 0H32.4297C33.8494 0 35 1.12219 35 2.50688V32.4931C35 33.8778 33.8494 35 32.4297 35H2.57031C1.15062 35 0 33.8778 0 32.4931V2.50688ZM10.8128 29.2994V13.4947H5.56063V29.2994H10.8128ZM8.18781 11.3356C10.0188 11.3356 11.1584 10.1237 11.1584 8.60563C11.1256 7.05469 10.0209 5.87563 8.22281 5.87563C6.42469 5.87563 5.25 7.05687 5.25 8.60563C5.25 10.1237 6.38969 11.3356 8.15281 11.3356H8.18781ZM18.9241 29.2994V20.4728C18.9241 20.0003 18.9591 19.5278 19.0991 19.1909C19.4775 18.2481 20.3416 17.2703 21.7941 17.2703C23.695 17.2703 24.4541 18.7184 24.4541 20.8447V29.2994H29.7063V20.2344C29.7063 15.3781 27.1162 13.1206 23.66 13.1206C20.8731 13.1206 19.6241 14.6519 18.9241 15.7303V15.785H18.8891L18.9241 15.7303V13.4947H13.6741C13.7397 14.9778 13.6741 29.2994 13.6741 29.2994H18.9241Z" fill="currentColor" />
-                  </svg>
-                  <span className="sr-only">LinkedIn</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="https://www.instagram.com/arcane_jvp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="flex items-center justify-center rounded-sm text-accent-muted hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-accent-muted"
-                >
-                  <svg viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true">
-                    <path d="M17.5 0C12.7509 0 12.1538 0.021875 10.2878 0.105C8.42188 0.1925 7.15094 0.485625 6.0375 0.91875C4.86903 1.35696 3.81093 2.04618 2.93781 2.93781C2.04618 3.81093 1.35696 4.86903 0.91875 6.0375C0.485625 7.14875 0.190313 8.42188 0.105 10.2812C0.021875 12.1516 0 12.7466 0 17.5022C0 22.2534 0.021875 22.8484 0.105 24.7144C0.1925 26.5781 0.485625 27.8491 0.91875 28.9625C1.36719 30.1131 1.96438 31.0887 2.93781 32.0622C3.90906 33.0356 4.88469 33.635 6.03531 34.0812C7.15094 34.5144 8.41969 34.8097 10.2834 34.895C12.1516 34.9781 12.7466 35 17.5 35C22.2534 35 22.8463 34.9781 24.7144 34.895C26.5759 34.8075 27.8512 34.5144 28.9647 34.0812C30.1324 33.6428 31.1897 32.9535 32.0622 32.0622C33.0356 31.0887 33.6328 30.1131 34.0812 28.9625C34.5122 27.8491 34.8075 26.5781 34.895 24.7144C34.9781 22.8484 35 22.2534 35 17.5C35 12.7466 34.9781 12.1516 34.895 10.2834C34.8075 8.42188 34.5122 7.14875 34.0812 6.0375C33.643 4.86903 32.9538 3.81093 32.0622 2.93781C31.1891 2.04618 30.131 1.35696 28.9625 0.91875C27.8469 0.485625 26.5737 0.190313 24.7122 0.105C22.8441 0.021875 22.2513 0 17.4956 0H17.5ZM15.9316 3.15438H17.5022C22.1747 3.15438 22.7281 3.16969 24.5722 3.255C26.2784 3.33156 27.2059 3.61812 27.8228 3.85656C28.6388 4.17375 29.2228 4.55438 29.8353 5.16687C30.4478 5.77938 30.8263 6.36125 31.1434 7.17938C31.3841 7.79406 31.6684 8.72156 31.745 10.4278C31.8303 12.2719 31.8478 12.8253 31.8478 17.4956C31.8478 22.1659 31.8303 22.7216 31.745 24.5656C31.6684 26.2719 31.3819 27.1972 31.1434 27.8141C30.8609 28.5729 30.4133 29.2595 29.8331 29.8244C29.2206 30.4369 28.6388 30.8153 27.8206 31.1325C27.2081 31.3731 26.2806 31.6575 24.5722 31.7362C22.7281 31.8194 22.1747 31.8391 17.5022 31.8391C12.8297 31.8391 12.2741 31.8194 10.43 31.7362C8.72375 31.6575 7.79844 31.3731 7.18156 31.1325C6.42213 30.8509 5.73475 30.4041 5.16906 29.8244C4.58779 29.2591 4.13947 28.5717 3.85656 27.8119C3.61812 27.1972 3.33156 26.2697 3.255 24.5634C3.17188 22.7194 3.15438 22.1659 3.15438 17.4912C3.15438 12.8166 3.17188 12.2675 3.255 10.4234C3.33375 8.71719 3.61813 7.78969 3.85875 7.17281C4.17594 6.35687 4.55656 5.77281 5.16906 5.16031C5.78156 4.54781 6.36344 4.16937 7.18156 3.85219C7.79844 3.61156 8.72375 3.32719 10.43 3.24844C12.0444 3.17406 12.67 3.15219 15.9316 3.15V3.15438ZM26.8428 6.05937C26.567 6.05937 26.294 6.11369 26.0392 6.21923C25.7844 6.32476 25.5529 6.47945 25.3579 6.67445C25.1629 6.86945 25.0082 7.10096 24.9027 7.35574C24.7971 7.61052 24.7428 7.8836 24.7428 8.15938C24.7428 8.43515 24.7971 8.70823 24.9027 8.96301C25.0082 9.21779 25.1629 9.4493 25.3579 9.6443C25.5529 9.8393 25.7844 9.99399 26.0392 10.0995C26.294 10.2051 26.567 10.2594 26.8428 10.2594C27.3998 10.2594 27.9339 10.0381 28.3277 9.6443C28.7216 9.25047 28.9428 8.71633 28.9428 8.15938C28.9428 7.60242 28.7216 7.06828 28.3277 6.67445C27.9339 6.28062 27.3998 6.05937 26.8428 6.05937ZM17.5022 8.51375C16.3102 8.49515 15.1263 8.71387 14.0196 9.15718C12.9129 9.60049 11.9055 10.2595 11.056 11.0959C10.2064 11.9323 9.53173 12.9294 9.07121 14.029C8.6107 15.1286 8.37353 16.3089 8.37353 17.5011C8.37353 18.6933 8.6107 19.8735 9.07121 20.9732C9.53173 22.0728 10.2064 23.0699 11.056 23.9063C11.9055 24.7427 12.9129 25.4017 14.0196 25.845C15.1263 26.2883 16.3102 26.507 17.5022 26.4884C19.8615 26.4516 22.1117 25.4886 23.7671 23.8071C25.4226 22.1257 26.3504 19.8607 26.3504 17.5011C26.3504 15.1415 25.4226 12.8765 23.7671 11.1951C22.1117 9.51363 19.8615 8.55056 17.5022 8.51375ZM17.5022 11.6659C18.2683 11.6659 19.027 11.8168 19.7348 12.11C20.4426 12.4032 21.0858 12.833 21.6275 13.3747C22.1692 13.9164 22.599 14.5596 22.8922 15.2674C23.1853 15.9752 23.3363 16.7339 23.3363 17.5C23.3363 18.2661 23.1853 19.0248 22.8922 19.7326C22.599 20.4404 22.1692 21.0836 21.6275 21.6253C21.0858 22.167 20.4426 22.5968 19.7348 22.89C19.027 23.1832 18.2683 23.3341 17.5022 23.3341C15.9549 23.3341 14.471 22.7194 13.3769 21.6253C12.2828 20.5312 11.6681 19.0473 11.6681 17.5C11.6681 15.9527 12.2828 14.4688 13.3769 13.3747C14.471 12.2806 15.9549 11.6659 17.5022 11.6659Z" fill="currentColor" />
-                  </svg>
-                  <span className="sr-only">Instagram</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="mailto:Procopiojvd@gmail.com"
-                  aria-label="Enviar email"
-                  className="flex items-center justify-center rounded-sm text-accent-muted hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-accent-muted"
-                >
-                  <svg viewBox="0 0 43 35" xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:h-7 md:w-7" aria-hidden="true">
-                    <path d="M38.7 30.625H34.4V11.4844L21.5 19.6875L8.6 11.4844V30.625H4.3V4.375H6.88L21.5 13.6719L36.12 4.375H38.7M38.7 0H4.3C1.9135 0 0 1.94687 0 4.375V30.625C0 31.7853 0.453034 32.8981 1.25944 33.7186C2.06585 34.5391 3.15957 35 4.3 35H38.7C39.8404 35 40.9342 34.5391 41.7406 33.7186C42.547 32.8981 43 31.7853 43 30.625V4.375C43 3.21468 42.547 2.10188 41.7406 1.28141C40.9342 0.460936 39.8404 0 38.7 0Z" fill="currentColor" />
-                  </svg>
-                  <span className="sr-only">Email</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div className="col-span-6 hidden flex-col justify-start gap-2 text-right md:flex md:col-span-3">
-          <p className="text-lg text-white/90">
-            Entre em contato para colocar as ideias em prática.
-            <br />
-            À disposição para o trabalho.
-          </p>
-          <a
-            href="mailto:Procopiojvd@gmail.com"
-            className="font-title text-2xl sm:text-[32px] hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent-muted rounded"
-          >
-            Procopiojvd@gmail.com
-          </a>
-        </div>
+        <FooterIntro />
+        <FooterContact />
       </div>
     </footer>
   );

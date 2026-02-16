@@ -1,3 +1,5 @@
+﻿import { SITE } from "@/data/site";
+
 interface SEOProps {
   title?: string;
   description?: string;
@@ -5,19 +7,21 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
-  schema?: object;
+  schema?: Record<string, unknown>;
 }
 
 const SEO = ({
-  title = "Procópio — Designer Gráfico & UX | Portfólio",
-  description = "Portfólio de Procópio, Designer Gráfico e UX especializado em criar experiências visuais únicas e funcionais.",
-  keywords = "design gráfico, ux design, portfólio, design visual, procópio",
-  image = "https://portcopio.vercel.app/og-image.png",
-  url = "https://portcopio.vercel.app/",
+  title = SITE.title,
+  description = SITE.description,
+  keywords = SITE.keywords,
+  image = SITE.image,
+  url = SITE.url,
   type = "website",
   schema,
 }: SEOProps) => {
-  const fullTitle = title.includes("Procópio") ? title : `${title} | Procópio`;
+  const fullTitle = title.includes(SITE.name)
+    ? title
+    : `${title} | ${SITE.name}`;
 
   return (
     <>
@@ -44,9 +48,7 @@ const SEO = ({
 
       {/* JSON-LD Structured Data */}
       {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(schema)}</script>
       )}
     </>
   );
