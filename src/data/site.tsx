@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactElement } from "react";
 
 type SvgProps = ComponentProps<"svg">;
 
@@ -51,7 +51,7 @@ export type SocialLink = {
   id: "linkedin" | "instagram" | "email";
   label: string;
   href: string;
-  icon: (props: SvgProps) => JSX.Element;
+  icon: (props: SvgProps) => ReactElement;
   target?: "_blank";
   rel?: string;
   includeInSchema?: boolean;
