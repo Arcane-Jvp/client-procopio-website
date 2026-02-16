@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/media/:cloud/:path*",
+      "destination": "https://res.cloudinary.com/:cloud/:path*"
+    },
+    {
       "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }

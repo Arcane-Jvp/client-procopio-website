@@ -1,6 +1,7 @@
 const CLOUDINARY_CONFIG = {
   cloud_name: "dfuzu0ds1",
-  base_url: "https://res.cloudinary.com/dfuzu0ds1/image/upload",
+  // Served via /media/* rewrite to keep URLs on our domain.
+  base_url: "/media/dfuzu0ds1/image/upload",
   default_transformations: {
     q: "auto:best",
     f: "auto",

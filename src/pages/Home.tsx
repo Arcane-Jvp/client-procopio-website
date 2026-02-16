@@ -22,7 +22,7 @@ export default function Home() {
       <SEO 
         title="Procópio — Designer Gráfico & UX | Portfólio"
         description="Portfólio de Procópio, Designer Gráfico e UX especializado em criar experiências visuais únicas e funcionais."
-        image="https://res.cloudinary.com/dflvo098t/image/upload/c_crop,x_0,y_75,w_800,h_500/v1762373525/procopio_wp3slo.jpg"
+        image="/media/dflvo098t/image/upload/c_crop,x_0,y_75,w_800,h_500/v1762373525/procopio_wp3slo.jpg"
         schema={schema}
       />
       <Hero />

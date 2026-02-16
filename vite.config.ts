@@ -11,4 +11,13 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  server: {
+    proxy: {
+      "/media": {
+        target: "https://res.cloudinary.com",
+        changeOrigin: true,
+        rewrite: (pathValue) => pathValue.replace(/^\/media/, ""),
+      },
+    },
+  },
 });
