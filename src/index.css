@@ -41,6 +41,8 @@
   --primary: #ffffff;
   --foreground: #222222;
 
+  --footer-logo: #2c0000;
+
   /* variáveis relacionadas a projetos */
   --foreground-tint: #2e2e2e;
   --logo-color: #b5b5b5;
@@ -53,6 +55,8 @@
   --accent-muted: #350000;
   --primary: #000000;
   --foreground: #ffffff;
+
+  --footer-logo: #ba2323;
 
   /* variáveis relacionadas a projetos */
   --foreground-tint: #d0d0d0;
@@ -69,6 +73,8 @@
   --color-primary: var(--primary);
   --color-foreground: var(--foreground);
 
+  --color-footer-logo: var(--footer-logo);
+
   /* variáveis relacionadas a projetos */
   --color-foreground-tint: var(--foreground-tint);
   --color-logo: var(--logo-color);
@@ -76,4 +82,11 @@
   /* tipografia */
   --font-title: var(--obvia);
   --font-body: var(--forma-djr);
+}
+
+.mwdt {
+  @apply max-w-350 w-full mx-auto;
+  &.footer {
+    @apply max-w-360;
+  }
 }

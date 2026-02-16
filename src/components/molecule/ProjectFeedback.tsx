@@ -51,13 +51,13 @@ const ProjectFeedback: FC<Props> = ({ comments = [], headingId = "feedback-headi
                                 <div className="bg-primary/5 rounded-lg sm:rounded-2xl">
                                     <div className="relative">
                                         <svg
-                                            width="24"
+                                            width="30"
                                             height="12"
-                                            viewBox="0 0 24 12"
+                                            viewBox="0 0 30 12"
                                             aria-hidden="true"
-                                            className="absolute -top-3 left-8 text-primary/5"
+                                            className="absolute -top-3 left-2.5 text-primary/5"
                                         >
-                                            <polygon points="12,0 6,12 18,12" fill="currentColor" />
+                                            <polygon points="15,0 7.5,12 22.5,12" fill="currentColor" />
                                         </svg>
                                         <p className="mt-2 text-primary py-2 px-3 sm:py-3 sm:px-5 text-lg">{comment.comment}</p>
                                     </div>
