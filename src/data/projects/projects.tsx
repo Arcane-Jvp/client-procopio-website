@@ -8,7 +8,7 @@ import {
   hazardPosterImage,
   porschePosterImage,
   projectsGallery,
-} from "./mainData";
+} from "./projectsData";
 
 export interface ProjectItem {
   id: string;
