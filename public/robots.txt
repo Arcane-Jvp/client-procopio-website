@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://portcopio.vercel.app/sitemap.xml
+Sitemap: https://procoopio.com.br/sitemap.xml
 
 # Permitir crawling de todas as páginas principais
 Allow: /
